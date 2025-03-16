@@ -11,19 +11,19 @@ pageextension 50100 "CRONUS Social Media Card" extends "Customer Card"
 
                 field(Facebook;Rec.Facebook)
                 {
-
+                    ApplicationArea = All;
                 }
                 field(X;Rec.X)
                 {
-
+                    ApplicationArea = All;
                 }
                 field(IG;Rec.IG)
                 {
-
+                    ApplicationArea = All;
                 }
                 field(LinkIn;Rec.LinkIn)
                 {
-                    
+                    ApplicationArea = All;
                 }
             }
         }

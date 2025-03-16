@@ -1,9 +1,11 @@
 page 50100 "CRONUS Course Card"
 {
+
     PageType = Card;
     UsageCategory = None;
     SourceTable = "CRONUS Course";
     Caption = 'Course Card';
+
 
     layout
     {
@@ -48,6 +50,16 @@ page 50100 "CRONUS Course Card"
                 field("Instructor Code"; rec."Instructor Code")
                 {
                     ApplicationArea = all;
+                    trigger OnValidate()
+                    var
+                        Res: Record Resource;
+                    begin
+                        if Rec."Instructor Code" <> '' then begin
+                            if Res.Get(Rec."Instructor Code") then
+                                Rec."Instructor Name" := Res.Name;
+                        end else
+                            Rec."Instructor Name" := '';
+                    end;
                 }
                 field("Instructor Name"; rec."Instructor Name")
                 {
@@ -83,4 +95,8 @@ page 50100 "CRONUS Course Card"
             }
         }
     }
+    trigger OnAfterGetCurrRecord()
+    begin
+        CurrPage.Update(false);
+    end;
 }
